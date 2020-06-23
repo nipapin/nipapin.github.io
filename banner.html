@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Запад 24</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap&subset=cyrillic"
+      rel="stylesheet"
+    />
+    <style>
+      @charset "utf-8";
+      @import https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap&subset=cyrillic;
+      .countup,
+        .hash, .sep {
+        letter-spacing: 0.1em;
+      }
+      body {
+        opacity: 1;
+        -webkit-transition: 0.7s opacity;
+        -o-transition: 0.7s opacity;
+        transition: 0.7s opacity;
+      }
+      body.fade {
+        opacity: 0;
+        -webkit-transition: none;
+        -o-transition: none;
+        transition: none;
+      }
+      a,
+      abbr,
+      acronym,
+      address,
+      applet,
+      article,
+      aside,
+      audio,
+      b,
+      big,
+      blockquote,
+      body,
+      canvas,
+      caption,
+      center,
+      cite,
+      code,
+      dd,
+      del,
+      details,
+      dfn,
+      div,
+      dl,
+      dt,
+      em,
+      embed,
+      fieldset,
+      figcaption,
+      figure,
+      footer,
+      form,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      header,
+      hgroup,
+      html,
+      i,
+      iframe,
+      img,
+      ins,
+      kbd,
+      label,
+      legend,
+      li,
+      mark,
+      menu,
+      nav,
+      object,
+      ol,
+      output,
+      p,
+      pre,
+      q,
+      ruby,
+      s,
+      samp,
+      section,
+      small,
+      span,
+      strike,
+      strong,
+      sub,
+      summary,
+      sup,
+      table,
+      tbody,
+      td,
+      tfoot,
+      th,
+      thead,
+      time,
+      tr,
+      tt,
+      u,
+      ul,
+      var,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      #pbd100x250,
+      .slgn,
+      .wrap1280 {
+        margin: 0 auto;
+      }
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      #pbd100x250 {
+        width: 100%;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        background-color: #efe5d9;
+        font-family: sans-serif;
+        max-width: 100%;
+        background-image: url(http://vesti-kaliningrad.ru/wp-content/uploads/2020/06/bg-mobile-min.jpg);
+        background-position: left;
+      }
+      @media (min-width: 520px) {
+        #pbd100x250 {
+          background-image: url(http://vesti-kaliningrad.ru/wp-content/uploads/2020/06/bg-tablet-min.jpg);
+        }
+      }
+      @media (min-width: 960px) {
+        #pbd100x250 {
+          background-image: url(http://vesti-kaliningrad.ru/wp-content/uploads/2020/06/bg-desktop-min.jpg);
+        }
+      }
+      .countup,
+      .hash,
+      .texts {
+        font-family: "Roboto Condensed", sans-serif;
+        text-transform: uppercase;
+      }
+      #pbd100x250:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(230, 215, 200, 0.15);
+        -webkit-box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.25) inset;
+        box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.25) inset;
+        background-position: 0 0;
+        opacity: 0.5;
+      }
+      .slgn,
+      .texts {
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+      }
+      .wrap1280 {
+        max-width: 1280px;
+        position: relative;
+        height: 200px;
+        width: 100%;
+      }
+      .b_logo,
+      .countup,
+      .hash,
+      .prLink,
+      .sep,
+      .slgn,
+      .stamp,
+      .texts {
+        position: absolute;
+      }
+      .texts {
+        z-index: 9;
+        left: 300px;
+        color: white;/* #c60301;*/
+        width: 100%;
+        font-weight: 400;
+        transform: translate(0, -50%);
+        max-width: calc(100% - 260px);
+      }
+      .prLink,
+      .slgn {
+        left: 0;
+        width: 100%;
+      }
+      .slgn {
+        z-index: 2;
+        height: auto;
+        max-width: calc(100% - 200px);
+        opacity: 0;
+        visibility: hidden;
+        font-size: 32px;
+        -webkit-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        transform: translate(0, -50%);
+      }
+      .b_logo,
+      .slgn.showing {
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+      }
+      #pbd1280x250 .slgn.slgnMain {
+        height: 64px;
+      }
+      .prLink {
+        text-decoration: none;
+        top: 0;
+        height: 100%;
+        z-index: 999;
+        display: block;
+      }
+      .b_logo,
+      .stamp {
+        display: block;
+        top: 50%;
+      }
+      .sep,
+      .slgn span {
+        display: inline-block;
+      }
+      body {
+        font-family: "Roboto Condensed", sans-serif;
+      }
+      .b_logo {
+        width: 330px;
+        height: 200px;
+        transform: translate(-5%, -43%);
+        left: -140px;
+        background: url(http://vesti-kaliningrad.ru/wp-content/uploads/2020/06/Main.png) no-repeat;
+        background-size: 100% auto;
+        z-index: 10;
+      }
+      .slgn span {
+        opacity: 0;
+        -webkit-transform: scale(1.5) translate(0, -2em);
+        -ms-transform: scale(1.5) translate(0, -2em);
+        transform: scale(1.5) translate(0, -2em);
+        -webkit-transform-origin: bottom;
+        -ms-transform-origin: bottom;
+        transform-origin: bottom;
+        -webkit-transition: opacity 0.5s ease-in-out,
+          text-shadow 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
+        -o-transition: opacity 0.5s ease-in-out, transform 0.75s ease-in-out,
+          text-shadow 0.75s ease-in-out;
+        transition: opacity 0.5s ease-in-out, transform 0.75s ease-in-out,
+          text-shadow 0.75s ease-in-out;
+        transition: opacity 0.5s ease-in-out, transform 0.75s ease-in-out,
+          text-shadow 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
+        white-space: nowrap;
+        font-weight: 400;
+        text-shadow: 0 3em 6px rgba(0, 0, 0, 0.75);
+        margin: 0.1em 0;
+      }
+      .slgn.showing span {
+        opacity: 1;
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        color: white;/* rgba(144, 20, 20, 0.75);*/
+        text-shadow: 0 0 0 transparent;
+      }
+      .countup,
+      .hash,
+      i.acc {
+        background-color: white;/* #c50a0a;*/
+        color: #000e91;
+      }
+      .slgn.showing {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(0, -50%);
+      }
+      .slgn .big:nth-of-type(2),
+      .slgn span:nth-of-type(2) {
+        -webkit-transition-delay: 0.25s !important;
+        -o-transition-delay: 0.25s !important;
+        transition-delay: 0.25s !important;
+      }
+      .slgn .big:nth-of-type(3),
+      .slgn span:nth-of-type(3) {
+        -webkit-transition-delay: 0.5s !important;
+        -o-transition-delay: 0.5s !important;
+        transition-delay: 0.5s !important;
+      }
+      .slgn .big:nth-of-type(4),
+      .slgn span:nth-of-type(4) {
+        -webkit-transition-delay: 0.75s !important;
+        -o-transition-delay: 0.75s !important;
+        transition-delay: 0.75s !important;
+      }
+      .slgn .big:nth-of-type(5),
+      .slgn span:nth-of-type(5) {
+        -webkit-transition-delay: 1s !important;
+        -o-transition-delay: 1s !important;
+        transition-delay: 1s !important;
+      }
+      .slgn .big:nth-of-type(6) {
+        -webkit-transition-delay: 1.25s !important;
+        -o-transition-delay: 1.25s !important;
+        transition-delay: 1.25s !important;
+      }
+      .slgn span:nth-of-type(7) {
+        -webkit-transition-delay: 1.5s !important;
+        -o-transition-delay: 1.5s !important;
+        transition-delay: 1.5s !important;
+      }
+      #squarePath {
+        stroke-width: 70px;
+        stroke: #0cefed;
+        stroke-dasharray: 2200px;
+        stroke-dashoffset: 2200px;
+        -webkit-animation: 6s SquarE linear infinite;
+        animation: 6s SquarE linear infinite;
+      }
+      .stamp {
+        right: 0;
+        width: 164px;
+        height: 200px;
+        background-image: url(http://vesti-kaliningrad.ru/wp-content/uploads/2020/06/stamp.png);
+        -webkit-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
+        transform: translate(0,-50%);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto 50%;
+      }
+      i.acc {
+        padding: 0.1em 0.25em;
+        font-weight: 500;
+        line-height: 1em;
+        -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+      }
+      .brk {
+        height: 1px;
+      }
+      .countup,
+      .hash {
+        bottom: 0;
+        left: 50%;
+        padding: 0 117px 0 10px;
+        font-size: 16px;
+        height: 24px;
+        line-height: 24px;
+        -webkit-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+      }
+      .hash {
+        bottom: auto;
+        bottom: 0;
+        padding: 0 10px;
+        font-weight: 700;
+        color: white;/*rgba(197, 10, 10, 0.75);*/
+        background: 0 0;
+      }
+      .sep,
+      .sep:after,
+      .sep:before {
+        background-color: #8b0d0d;
+      }
+      .sep {
+        width: 86px;
+        text-align: center;
+        right: 0;
+        top: 0;
+        height: 100%;
+        padding: 0;
+      }
+      .countup:before,
+      .hash:after,
+      .hash:before,
+      .sep:after,
+      .sep:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 26px;
+        height: 100%;
+        -webkit-transform: skewX(-45deg);
+        -ms-transform: skewX(-45deg);
+        transform: skewX(-45deg);
+        top: 0;
+      }
+      .sep:after {
+        right: -12px;
+        z-index: 0;
+      }
+      .sep:before {
+        left: -11px;
+        z-index: 0;
+      }
+      .countup:before {
+        background-color: #c50a0a;
+        left: -12px;
+        top: 0;
+      }
+      .countup i {
+        font-style: normal;
+        z-index: 5;
+        display: inline-block;
+        position: relative;
+        font-weight: 700;
+      }
+      #numbers {
+        color: #ffe;
+      }
+      @media (max-width: 1000px) {
+        .slgn {
+          font-size: 30px;
+        }
+        .texts {
+          max-width: calc(100% - 120px);
+        }
+        .stamp {
+          opacity: 0.5;
+        }
+      }
+      @media (max-width: 800px) {
+        .slgn {
+          font-size: 24px;
+        }
+        .countup,
+        .hash {
+          display: none;
+        }
+        .stamp {
+          opacity: 0.25;
+        }
+        .hash {
+          display: block;
+        }
+      }
+      @media (max-width: 640px) {
+        .b_logo {
+          width: 240px;
+          height: 200px;
+        }
+        .slgn {
+          font-size: 26px;
+        }
+        .texts {
+          left: 180px;
+          max-width: calc(100% - 30px);
+        }
+      }
+      @media (max-width: 520px) {
+        .b_logo {
+            width: 100px;
+            height: 200px;
+            left: 30px;
+            top: 90px;
+        }
+        .slgn {
+          font-size: 20px;
+        }
+        .texts {
+          left: 110px;
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body class="fade">
+    <script>
+      document.body.className = "fade";
+    </script>
+    <!-- partial:index.partial.html -->
+    <div id="pbd100x250" class="">
+      <a class="prLink" target="_blank" href="http://zapad-24.ru/"></a>
+      <div class="wrap1280">
+        <div class="b_logo"></div>
+        <div class="texts" id="show">
+          <div class="slgn slgn00 showing">
+            <span><i class="big">Новости</i></span>
+            <span>Северо-Западного</span> <br /><span>федерального округа</span>
+            <span><i class="big"> </i></span>
+          </div>
+          <div class="slgn slgn00">
+            <span>В начале</span> <span>каждого</span>
+            <span><i class="acc">часа</i></span>
+          </div>
+          <div class="slgn slgn00">
+            <span>Смотрите</span> <span>онлайн</span>
+            <div class="brk"></div>
+            <span>на сайте</span> <span><i class="acc">zapad-24.ru</i></span>
+          </div>
+        </div>
+        <div class="stamp"></div>
+        <div class="hash">#Запад24</div>
+      </div>
+    </div>
+    <!-- partial -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function (e) {
+        document.body.classList.remove("fade");
+      });
+      //slides
+      var slides = document.querySelectorAll("#show .slgn");
+      var currentSlide = 0;
+      var slideInterval = setInterval(nextSlide, 4500);
+
+      function nextSlide() {
+        slides[currentSlide].className = "slgn";
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].className = "slgn showing";
+      }
+    </script>
+  </body>
+</html>
